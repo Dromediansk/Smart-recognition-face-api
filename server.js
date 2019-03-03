@@ -4,11 +4,13 @@ const bcrypt = require('bcrypt-nodejs');
 const cors = require('cors');
 const knex = require('knex');
 
+//controllers
 const register = require('./controllers/register');
 const signin = require('./controllers/signin');
 const profile = require('./controllers/profile');
 const image = require('./controllers/image');
 
+//setting the database
 const db = knex({
   client: 'pg',
   connection: {
@@ -22,6 +24,7 @@ const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 
+//endpoints
 app.get('/', (req, res)=> {
 	res.send('it is working!');
 })
