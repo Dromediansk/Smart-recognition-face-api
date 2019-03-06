@@ -1,3 +1,6 @@
+if (process.env.NODE_ENV !== 'production') {
+	require('dotenv').load();
+  }
 const Clarifai = require('clarifai');
 
 const app = new Clarifai.App({

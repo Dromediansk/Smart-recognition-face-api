@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const bcrypt = require('bcrypt-nodejs');
 const cors = require('cors');
 const knex = require('knex');
+const morgan = require('morgan');
 
 //controllers
 const register = require('./controllers/register');
@@ -21,6 +22,7 @@ const db = knex({
 
 const app = express();
 
+app.use(morgan('combined'));
 app.use(cors());
 app.use(bodyParser.json());
 
@@ -35,5 +37,5 @@ app.put('/image', (req, res) => { image.handleImage(req, res, db)})
 app.post('/imageurl', (req, res) => { image.handleApiCall(req, res)})
 
 app.listen(process.env.PORT || 3000, ()=> {
-	console.log(`app is running on port ${process.env.PORT}`)
+	console.log(`app is running on port ${process.env.PORT || 3000}`)
 })
