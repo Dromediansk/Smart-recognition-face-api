@@ -14,14 +14,10 @@ const image = require('./controllers/image');
 //setting the database
 const db = knex({
   client: 'pg',
-  connection: {
-    connectionString: process.env.DATABASE_URL,
-    ssl: true,
-  }
+  connection: process.env.POSTGRES_URI
 });
 
 const app = express();
-
 app.use(morgan('combined'));
 app.use(cors());
 app.use(bodyParser.json());
