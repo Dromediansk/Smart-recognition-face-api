@@ -1,9 +1,9 @@
 FROM node:8.15.1
 
-WORKDIR /usr/src/smart-brain-api
+RUN mkdir /app
 
-COPY ./ ./
+ADD . /app
 
-RUN npm install
+WORKDIR /app
 
-CMD ["/bin/bash"]
+CMD node server.js --bind 0.0.0.0:$PORT
