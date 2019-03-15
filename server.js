@@ -1,5 +1,5 @@
 const express = require('express');
-const port = process.env.PORT;
+const port = process.env.PORT || 3000;
 const bodyParser = require('body-parser');
 const bcrypt = require('bcrypt-nodejs');
 const cors = require('cors');
