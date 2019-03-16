@@ -1,5 +1,4 @@
 const express = require('express');
-const port = process.env.PORT || 3000;
 const bodyParser = require('body-parser');
 const bcrypt = require('bcrypt-nodejs');
 const cors = require('cors');
@@ -35,6 +34,7 @@ app.post('/profile/:id', auth.requireAuth, (req, res) => { profile.handleProfile
 app.put('/image', auth.requireAuth, (req, res) => { image.handleImage(req, res, db)})
 app.post('/imageurl', auth.requireAuth, (req, res) => { image.handleApiCall(req, res)})
 
+const port = process.env.PORT || 3000;
 app.listen(port, ()=> {
 	console.log(`app is running on port ${port}`);
 })
