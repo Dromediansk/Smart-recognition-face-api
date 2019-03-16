@@ -1,9 +1,18 @@
 FROM node:8.15.1
 
-RUN mkdir /app
+# Create app directory
+RUN mkdir -p /usr/src/smart-brain-api
+WORKDIR /usr/src/smart-brain-api
 
-ADD . /app
+# Install app dependencies
+COPY package.json /usr/src/smart-brain-api
+RUN npm install
 
-WORKDIR /app
+# Bundle app source
+COPY . /usr/src/smart-brain-api
 
-CMD node server.js --bind 0.0.0.0:$PORT
+# Build arguments
+ARG NODE_VERSION=8.15.1
+
+# Environment
+ENV NODE_VERSION $NODE_VERSION
